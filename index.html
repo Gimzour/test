@@ -12,7 +12,8 @@
             --bg-color: #0b0f19;
             --accent-color: #00f2fe;
             --text-color: #e2e8f0;
-            --card-bg: rgba(18, 24, 38, 0.7);
+            --card-bg: rgba(18, 24, 38, 0.75);
+            --card-border: rgba(255, 255, 255, 0.08);
         }
 
         * {
@@ -30,7 +31,7 @@
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
-            padding: 2rem 1rem;
+            padding: 2rem 1.5rem;
             position: relative;
             overflow-x: hidden;
         }
@@ -48,6 +49,29 @@
             pointer-events: none;
         }
 
+        /* En-tête avec la Météo */
+        header {
+            width: 100%;
+            max-width: 950px;
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 1.5rem;
+            z-index: 2;
+        }
+
+        .weather-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 0.5rem 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Citation */
         .container {
             max-width: 900px;
             width: 100%;
@@ -105,7 +129,7 @@
             width: 100%;
             height: 450px;
             background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--card-border);
             border-radius: 12px;
             padding: 1rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -121,6 +145,17 @@
 </head>
 <body>
 
+    <!-- Widget Météo en haut à droite -->
+    <header>
+        <div class="weather-card">
+            <a class="weatherwidget-io" href="https://forecast7.com/fr/48d892d29/levallois-perret/" data-label_1="LEVALLOIS-PERRET" data-label_2="Météo" data-font="Helvetica" data-icons="Climacons Animated" data-theme="dark" data-basecolor="transparent" data-accent="rgba(255,255,255,0.1)" data-textcolor="#e2e8f0" data-highcolor="#00f2fe" data-lowcolor="#94a3b8" data-suncolor="#ffb703" data-mooncolor="#00f2fe" data-cloudcolor="#94a3b8" data-raincolor="#00f2fe" style="display: block; width: 220px; height: 40px;">LEVALLOIS-PERRET Météo</a>
+            <script>
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+            </script>
+        </div>
+    </header>
+
+    <!-- Citation de Jérôme Kerviel -->
     <main class="container">
         <div class="quote-icon">“</div>
         <blockquote>
@@ -129,7 +164,7 @@
         <div class="author">Jérôme Kerviel</div>
     </main>
 
-    <!-- Widget Graphique Boursier Société Générale (GLE) -->
+    <!-- Widget Bourse Société Générale -->
     <div class="chart-container">
         <div class="tradingview-widget-container">
             <div class="tradingview-widget-container__widget"></div>
