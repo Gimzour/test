@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Citation - Jérôme Kerviel</title>
+    <title>Jérôme Kerviel & Société Générale</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
             --bg-color: #0b0f19;
             --accent-color: #00f2fe;
             --text-color: #e2e8f0;
-            --author-color: #94a3b8;
+            --card-bg: rgba(18, 24, 38, 0.7);
         }
 
         * {
@@ -27,48 +27,51 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            padding: 2rem;
-            overflow: hidden;
+            padding: 2rem 1rem;
             position: relative;
+            overflow-x: hidden;
         }
 
-        /* Effet de lumière subtil en arrière-plan */
+        /* Effet de lumière en arrière-plan */
         body::before {
             content: '';
             position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(0, 242, 254, 0.07) 0%, rgba(0,0,0,0) 70%);
-            top: 50%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.05) 0%, rgba(0,0,0,0) 70%);
+            top: 30%;
             left: 50%;
             transform: translate(-50%, -50%);
             pointer-events: none;
         }
 
         .container {
-            max-width: 850px;
+            max-width: 900px;
+            width: 100%;
             text-align: center;
             position: relative;
             z-index: 1;
+            margin-bottom: 2rem;
         }
 
         .quote-icon {
-            font-size: 4rem;
+            font-size: 3rem;
             color: var(--accent-color);
             opacity: 0.3;
             line-height: 1;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             font-family: 'Cinzel', serif;
         }
 
         blockquote {
-            font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+            font-size: clamp(1.1rem, 2.2vw, 1.6rem);
             font-weight: 300;
             line-height: 1.5;
             letter-spacing: -0.01em;
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.5rem;
             font-style: italic;
             color: #f8fafc;
         }
@@ -76,13 +79,13 @@
         .author {
             display: inline-block;
             font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             font-weight: 700;
-            letter-spacing: 0.25em;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--accent-color);
             position: relative;
-            padding-top: 1.5rem;
+            padding-top: 1rem;
         }
 
         .author::before {
@@ -91,9 +94,28 @@
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 50px;
+            width: 40px;
             height: 2px;
             background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+        }
+
+        /* Section du graphique boursier */
+        .chart-container {
+            max-width: 950px;
+            width: 100%;
+            height: 450px;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            z-index: 1;
+        }
+
+        .tradingview-widget-container, .tradingview-widget-container__widget {
+            height: 100%;
+            width: 100%;
         }
     </style>
 </head>
@@ -106,6 +128,28 @@
         </blockquote>
         <div class="author">Jérôme Kerviel</div>
     </main>
+
+    <!-- Widget Graphique Boursier Société Générale (GLE) -->
+    <div class="chart-container">
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+            {
+                "width": "100%",
+                "height": "100%",
+                "symbol": "EURONEXT:GLE",
+                "interval": "D",
+                "timezone": "Europe/Paris",
+                "theme": "dark",
+                "style": "3",
+                "locale": "fr",
+                "allow_symbol_change": false,
+                "calendar": false,
+                "support_host": "https://www.tradingview.com"
+            }
+            </script>
+        </div>
+    </div>
 
 </body>
 </html>
