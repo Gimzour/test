@@ -2,10 +2,110 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Mon Site GitHub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citation - Jérôme Kerviel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --accent-color: #00f2fe;
+            --text-color: #e2e8f0;
+            --author-color: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Effet de lumière subtil en arrière-plan */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.07) 0%, rgba(0,0,0,0) 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 850px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-icon {
+            font-size: 4rem;
+            color: var(--accent-color);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 1rem;
+            font-family: 'Cinzel', serif;
+        }
+
+        blockquote {
+            font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+            font-weight: 300;
+            line-height: 1.5;
+            letter-spacing: -0.01em;
+            margin-bottom: 2.5rem;
+            font-style: italic;
+            color: #f8fafc;
+        }
+
+        .author {
+            display: inline-block;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            position: relative;
+            padding-top: 1.5rem;
+        }
+
+        .author::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+        }
+    </style>
 </head>
 <body>
-    <h1>Bienvenue sur mon site web !</h1>
-    <p>Hébergé gratuitement sur GitHub Pages.</p>
+
+    <main class="container">
+        <div class="quote-icon">“</div>
+        <blockquote>
+            « C'est là que tout le pognon se fait, sous un bon stress, avec beaucoup d'adrénaline, un truc hyper rythmé et actif, enthousiasmant, challengeant, à proximité de têtes très bien faites. »
+        </blockquote>
+        <div class="author">Jérôme Kerviel</div>
+    </main>
+
 </body>
 </html>
